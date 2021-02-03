@@ -1,16 +1,12 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			starShipsList: []
+			starShipsList: [],
+			urlStored: "https://www.swapi.tech/api/starships"
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			// exampleFunction: () => {
-			// 	getActions().changeColor(0, "green");
-			// },
-
 			getStarShips: () => {
-				fetch("https://www.swapi.tech/api/starships")
+				fetch(getStore().urlStored)
 					.then(response => {
 						if (!response.ok) {
 							throw Error(response.statusText);
@@ -19,30 +15,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(responseAsJson => {
 						// Do stuff with the JSON
-						console.log("starships", responseAsJson);
-						getActions().setStarShips(responseAsJson.results);
-					})
-					.catch(error => {
-						console.log("Looks like there was a problem: \n", error);
+						// console.log("next ones", responseAsJson.next);
+						getActions().setUrlStored(responseAsJson.next);
+						getActions().setStarShipsList(responseAsJson.results); //SPREAD
 					});
+				// .catch(error => {
+				// 	console.log("Looks like there was a problem: \n", error);
+				// });
 			},
-			setStarShips: starShipsfromAPI => {
-				setStore({ starShipsList: starShipsfromAPI });
+
+			setUrlStored: urlFromAPI => {
+				setStore({ urlStored: urlFromAPI });
+			},
+			setStarShipsList: starShipsfromAPI => {
+				starShipsfromAPI.map(elem => {
+					setStore({ starShipsList: [...getStore().starShipsList, elem] });
+				});
 			}
-			// changeColor: (index, color) => {
-			// 	//get the store
-			// 	const store = getStore();
-
-			// 	//we have to loop the entire demo array to look for the respective index
-			// 	//and change its color
-			// 	const demo = store.demo.map((elm, i) => {
-			// 		if (i === index) elm.background = color;
-			// 		return elm;
-			// 	});
-
-			// 	//reset the global store
-			// 	setStore({ demo: demo });
-			// }
 		}
 	};
 };

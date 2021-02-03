@@ -6,8 +6,6 @@ import CardStarShips from "../component/cardstarships.jsx";
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
-	console.log("from store", store.starShipsList);
-
 	let starShipsInHTML = store.starShipsList.map((elem, index) => {
 		return (
 			<CardStarShips
@@ -17,11 +15,11 @@ export const Home = () => {
 			/>
 		);
 	});
-	console.log("in html", starShipsInHTML);
 
 	return (
 		<div className="container text-center mt-5">
 			<div className="row d-flex flex-row justify-content-between">{starShipsInHTML}</div>
+			{console.log(store.starShipsList)}
 		</div>
 	);
 };
