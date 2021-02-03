@@ -1,16 +1,21 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			url: "https://www.swapi.tech/api/planets",
 			planets: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-			setPlanets: listPlanets => {
-				console.log(listPlanets);
-				setStore({ planets: listPlanets });
+			setUrl: nextUrl => {
+				setStore({ url: nextUrl });
+			},
+			setPlanets: newPlanets => {
+				newPlanets.map(item => {
+					setStore({ planets: [...getStore().planets, item] });
+				});
 			},
 			getPlanets: () => {
-				fetch("https://www.swapi.tech/api/planets")
+				fetch(getStore().url)
 					.then(response => {
 						if (!response.ok) {
 							throw Error(response.statusText);
@@ -18,8 +23,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
+						getActions().setUrl(responseAsJson.next);
 						getActions().setPlanets(responseAsJson.results);
-						console.log(responseAsJson);
 					});
 			}
 		}
