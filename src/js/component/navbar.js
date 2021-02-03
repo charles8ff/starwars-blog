@@ -1,17 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Navbar } from "react-bootstrap";
 
-export const Navbar = () => {
+export const Navbars = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
-				</Link>
-			</div>
-		</nav>
+		<Navbar className="navbar">
+			<Navbar.Brand href="#home">
+				<img
+					alt=""
+					src="https://www.unioncosmos.com/wp-content/uploads/2017/01/Union-Cosmos-Star-Wars-Logo-Amarillo-PNG.png"
+					width="130"
+					height="50"
+					className="d-inline-block align-top"
+				/>{" "}
+			</Navbar.Brand>
+		</Navbar>
 	);
 };
