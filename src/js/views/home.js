@@ -24,6 +24,7 @@ export const Home = () => {
 									eyeColor={item.eye_color}
 									gender={item.gender}
 									birthyear={item.birth_year}
+									url={item.url.replace("https://www.swapi.tech/api/", "")}
 								/>
 							</Col>
 						);

@@ -11,7 +11,9 @@ export const Cards = props => (
 				<p>Eye color: {props.eyeColor}</p>
 				<p>Gender: {props.gender}</p>
 				<p>BirthYear: {props.birthyear}</p>
-				<Button variant="primary">Go somewhere</Button>
+				<Button href={props.url} variant="primary">
+					Go somewhere
+				</Button>
 			</Card.Body>
 		</Card>
 	</>
@@ -22,5 +24,6 @@ Cards.propTypes = {
 	img: PropTypes.string,
 	eyeColor: PropTypes.string,
 	gender: PropTypes.string,
-	birthyear: PropTypes.string
+	birthyear: PropTypes.string,
+	url: PropTypes.string
 };
