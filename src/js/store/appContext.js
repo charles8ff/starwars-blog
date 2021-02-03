@@ -23,9 +23,10 @@ const injectContext = PassedComponent => {
 
 		useEffect(
 			() => {
-				state.actions.connectApi();
+				state.actions.getPeople();
+				state.actions.getPlanets();
 			},
-			[state.store.url]
+			[state.store.urlPeople, state.store.urlPlanets]
 		);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

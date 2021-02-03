@@ -2,24 +2,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			characters: [],
-			url: "https://www.swapi.tech/api/people"
+			urlPeople: "https://www.swapi.tech/api/people",
+			urlPlanets: "https://www.swapi.tech/api/planets",
+			planets: []
 		},
 		actions: {
-			setURL: next => {
-				setStore({ url: next });
+			setURLPeople: next => {
+				setStore({ urlPeople: next });
 			},
 			setCharacters: charactersList => {
 				setStore({ characters: [...getStore().characters, ...charactersList] });
 			},
-			connectApi: () => {
-				fetch(getStore().url)
+			setUrlPlanets: nextUrl => {
+				setStore({ urlPlanets: nextUrl });
+			},
+			setPlanets: newPlanets => {
+				newPlanets.map(item => {
+					setStore({ planets: [...getStore().planets, item] });
+				});
+			},
+			getPeople: () => {
+				fetch(getStore().urlPeople)
 					.then(async res => {
 						const response = await res.json();
 						getActions().setCharacters(response.results);
-						getActions().setURL(response.next);
+						getActions().setURLPeople(response.next);
 					})
 					.catch(err => {
 						throw err;
+					});
+			},
+			getPlanets: () => {
+				fetch(getStore().urlPlanets)
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						getActions().setUrlPlanets(responseAsJson.next);
+						getActions().setPlanets(responseAsJson.results);
 					});
 			}
 		}
