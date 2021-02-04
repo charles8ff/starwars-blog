@@ -21,24 +21,24 @@ const injectContext = PassedComponent => {
 			})
 		);
 
-		useEffect(
-			() => {
-				state.actions.getPeople();
-			},
-			[state.store.urlPeople]
-		);
+		// useEffect(
+		// 	() => {
+		// 		state.actions.getPeople();
+		// 	},
+		// 	[state.store.urlPeople]
+		// );
 		useEffect(
 			() => {
 				state.actions.getPlanets();
 			},
 			[state.store.urlPlanets]
 		);
-		useEffect(
-			() => {
-				state.actions.getStarShips(state.store.urlStored);
-			},
-			[state.store.urlStored]
-		);
+		// useEffect(
+		// 	() => {
+		// 		state.actions.getStarShips(state.store.urlStored);
+		// 	},
+		// 	[state.store.urlStored]
+		// );
 
 		return (
 			<Context.Provider value={state}>
