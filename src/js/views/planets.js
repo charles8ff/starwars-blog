@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 import { Singlecard } from "../component/singlecard.jsx";
+import { Cardplanets } from "../component/card.jsx";
 
 import "../../styles/home.scss";
 
@@ -11,31 +12,29 @@ export const Planets = props => {
 	const { store, actions } = useContext(Context);
 	const planetName = useParams();
 	const history = useHistory();
-	const [urlTest, setUrlTest] = useState("");
 
-	let newPlanet = store.planets.find(item => {
-		if (item.name == planetName.id.replace("_", " ")) {
-			return item;
-		}
-	});
+	console.log("he", store.planetsDetails);
+	console.log("este es mi array", store.planetsDetails);
 
-	const prueba = url => {
-		setUrlTest(store.url);
-		return urlTest;
-	};
+	// let newPlanet = store.planets.find(item => {
+	// 	if (item.name == planetName.id.replace("_", " ")) {
+	// 		return item;
+	// 	}
+	// });
 
 	useEffect(() => {
-		prueba(store.url);
-
-		actions.getPlanetsDetails(urlTest);
+		actions.getPlanetsDetails(store.url);
 	}, []);
 
-	// useEffect(
-	// 	() => {
-	// 		history.push("/planets/" + planetName);
-	// 	},
-	// 	[newPlanet.url]
-	// );
+	//**CREAR COMPONENTE - REVISAR ARRAY VS OBJECT LOS ITEMS VAN POR INDEX */
 
-	return <Singlecard />;
+	// let detailPlanet = store.planetsDetails.map((item, index) => {
+	// 	return (
+	// 		<>
+	// 			<Cardplanets name={item.name} index={index} url={item.url} />
+	// 		</>
+	// 	);
+	// });
+
+	return <div>{detailPlanet}</div>;
 };

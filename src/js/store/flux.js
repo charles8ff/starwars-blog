@@ -7,7 +7,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			urlPeople: "https://www.swapi.tech/api/people",
 			planets: [],
 			urlPlanets: "https://www.swapi.tech/api/planets",
-			url: ""
+			url: "",
+			planetsDetails: []
 		},
 		actions: {
 			// setUrlStored: urlFromAPI => {
@@ -34,6 +35,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			setUrl: newUrl => {
 				setStore({ url: newUrl });
+			},
+			setPlanetsDetails: newPlanet => {
+				newPlanet.map(item => {
+					setStore({ planetsDetails: [...getStore().planetsDetails, item] });
+				});
 			},
 			// getPeople: () => {
 			// 	fetch(getStore().urlPeople)
@@ -81,9 +87,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						//console.log(responseAsJson);
-						//console.log(responseAsJson.result);
-						console.log(responseAsJson.result.properties);
+						let details = Object.values(responseAsJson.result.properties);
+						// //setSongs(details);
+						// console.log(responseAsJson);
+						// console.log("hola", details);
+						getActions().setPlanetsDetails(details);
 					});
 			},
 			getUrl: index => {
