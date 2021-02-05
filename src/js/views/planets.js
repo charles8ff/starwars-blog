@@ -11,31 +11,24 @@ import "../../styles/home.scss";
 export const Planets = props => {
 	const { store, actions } = useContext(Context);
 	const planetName = useParams();
-	const history = useHistory();
+
+	let url = {};
 
 	let newPlanet = store.planets.find(item => {
-		if (item.name == planetName.id.replace("_", " ")) {
-			return item;
-		}
+		if (item.name == planetName.id.replace("_", " ")) return (url = item);
 	});
 
-	useEffect(() => {
-		actions.getPlanetsDetails(newPlanet.url);
-		history.push(history.location.pathname);
-		console.log("huhuh", history.location.pathname);
-	}, []);
+	const getUrl = () => {
+		let getUrl = Object.values(url);
+		return getUrl[2];
+	};
 
-	console.log("he", store.planetsDetails);
-	console.log("este es mi array", store.planetsDetails);
-	//**CREAR COMPONENTE - REVISAR ARRAY VS OBJECT LOS ITEMS VAN POR INDEX */
-
-	// let detailPlanet = store.planetsDetails.map((item, index) => {
-	// 	return (
-	// 		<>
-	// 			<Cardplanets name={item.name} index={index} url={item.url} />
-	// 		</>
-	// 	);
-	// });
+	useEffect(
+		() => {
+			actions.getPlanetsDetails(getUrl());
+		},
+		[getUrl() != undefined]
+	);
 
 	return <div>HOLA</div>;
 };

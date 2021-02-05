@@ -7,7 +7,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			urlPeople: "https://www.swapi.tech/api/people",
 			planets: [],
 			urlPlanets: "https://www.swapi.tech/api/planets",
-			url: "",
 			planetsDetails: []
 		},
 		actions: {
@@ -32,9 +31,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				newPlanets.map(item => {
 					setStore({ planets: [...getStore().planets, item] });
 				});
-			},
-			setUrl: newUrl => {
-				setStore({ url: newUrl });
 			},
 			setPlanetsDetails: newPlanet => {
 				newPlanet.map(item => {
@@ -61,7 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						console.log(responseAsJson);
+						//	console.log(responseAsJson);
 						getActions().setUrlPlanets(responseAsJson.next);
 						getActions().setPlanets(responseAsJson.results);
 					});
@@ -80,6 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getPlanetsDetails: urlplanet => {
+				console.log("action", urlplanet);
 				fetch(urlplanet)
 					.then(response => {
 						if (!response.ok) {
@@ -88,17 +85,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						let details = Object.values(responseAsJson.result);
-						setSongs(details);
-						console.log(responseAsJson);
-						console.log("hola", details);
-						getActions().setPlanetsDetails(details);
+						console.log(responseAsJson.result.properties);
+						let details = Object.keys(responseAsJson.result.properties);
+						//setStore({ planetsDetails: [...details] });
+						//	setSongs(details);
+						//console.log(details);
+						//	console.log("hola", details);
+						setStore({ planetsDetails: details });
+						//getActions().setPlanetsDetails(details);
 					});
-			},
-			getUrl: index => {
-				const newUrl = [...getStore().planets];
-				newUrl[index].url = getStore().planets[index].url;
-				getActions().setUrl(newUrl[index].url);
 			}
 		}
 	};
