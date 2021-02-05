@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, Fragment } from "react";
+import React, { useContext, useEffect } from "react";
 import { DropdownButton, Dropdown, Button } from "react-bootstrap";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
@@ -26,11 +26,9 @@ export const Favorites = props => {
 		});
 	};
 	return (
-		<>
-			<DropdownButton id="dropdown-item-button" title="Dropdown button">
-				{favoritesInHTML()}
-			</DropdownButton>
-		</>
+		<DropdownButton id="dropdown-item-button" title="Dropdown button">
+			{favoritesInHTML()}
+		</DropdownButton>
 	);
 };
 

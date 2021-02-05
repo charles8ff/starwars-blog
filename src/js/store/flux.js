@@ -26,10 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			clickDeleteFavorite: targetIndex => {
-				//console.log(targetIndex);
 				setStore({ favorites: getStore().favorites.filter(index => index !== targetIndex) });
-				//setTaskList(taskList.filter((_, index) => index !== targetIndex)); //in our website
-				console.log(getStore().favorites);
 			},
 
 			capturePlanet: name => {

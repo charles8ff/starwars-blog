@@ -30,12 +30,12 @@ const injectContext = PassedComponent => {
 			},
 			[state.store.urlPlanets]
 		);
-		useEffect(
-			() => {
-				state.actions.getStarShips(state.store.urlStored);
-			},
-			[state.store.urlStored]
-		);
+		// useEffect(
+		// 	() => {
+		// 		state.actions.getStarShips(state.store.urlStored);
+		// 	},
+		// 	[state.store.urlStored]
+		// );
 
 		return (
 			<Context.Provider value={state}>
