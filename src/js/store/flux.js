@@ -11,20 +11,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planetsDetails: []
 		},
 		actions: {
-			// setUrlStored: urlFromAPI => {
-			// 	setStore({ urlStored: urlFromAPI });
-			// },
-			// setStarShipsList: starShipsfromAPI => {
-			// 	starShipsfromAPI.map(elem => {
-			// 		setStore({ starShipsList: [...getStore().starShipsList, elem] });
-			// 	});
-			// },
-			// setURLPeople: next => {
-			// 	setStore({ urlPeople: next });
-			// },
-			// setCharacters: charactersList => {
-			// 	setStore({ characters: [...getStore().characters, ...charactersList] });
-			// },
+			setUrlStored: urlFromAPI => {
+				setStore({ urlStored: urlFromAPI });
+			},
+			setStarShipsList: starShipsfromAPI => {
+				starShipsfromAPI.map(elem => {
+					setStore({ starShipsList: [...getStore().starShipsList, elem] });
+				});
+			},
+			setURLPeople: next => {
+				setStore({ urlPeople: next });
+			},
+			setCharacters: charactersList => {
+				setStore({ characters: [...getStore().characters, ...charactersList] });
+			},
 			setUrlPlanets: nextUrl => {
 				setStore({ urlPlanets: nextUrl });
 			},
@@ -41,17 +41,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ planetsDetails: [...getStore().planetsDetails, item] });
 				});
 			},
-			// getPeople: () => {
-			// 	fetch(getStore().urlPeople)
-			// 		.then(async res => {
-			// 			const response = await res.json();
-			// 			getActions().setCharacters(response.results);
-			// 			getActions().setURLPeople(response.next);
-			// 		})
-			// 		.catch(err => {
-			// 			throw err;
-			// 		});
-			// },
+			getPeople: () => {
+				fetch(getStore().urlPeople)
+					.then(async res => {
+						const response = await res.json();
+						getActions().setCharacters(response.results);
+						getActions().setURLPeople(response.next);
+					})
+					.catch(err => {
+						throw err;
+					});
+			},
 			getPlanets: () => {
 				fetch(getStore().urlPlanets)
 					.then(response => {
@@ -61,23 +61,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
+						console.log(responseAsJson);
 						getActions().setUrlPlanets(responseAsJson.next);
 						getActions().setPlanets(responseAsJson.results);
 					});
 			},
-			// getStarShips: () => {
-			// 	fetch(getStore().urlStored)
-			// 		.then(response => {
-			// 			if (!response.ok) {
-			// 				throw Error(response.statusText);
-			// 			}
-			// 			return response.json();
-			// 		})
-			// 		.then(responseAsJson => {
-			// 			getActions().setUrlStored(responseAsJson.next);
-			// 			getActions().setStarShipsList(responseAsJson.results);
-			// 		});
-			// },
+			getStarShips: () => {
+				fetch(getStore().urlStored)
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						getActions().setUrlStored(responseAsJson.next);
+						getActions().setStarShipsList(responseAsJson.results);
+					});
+			},
 			getPlanetsDetails: urlplanet => {
 				fetch(urlplanet)
 					.then(response => {
@@ -87,10 +88,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						let details = Object.values(responseAsJson.result.properties);
-						// //setSongs(details);
-						// console.log(responseAsJson);
-						// console.log("hola", details);
+						let details = Object.values(responseAsJson.result);
+						setSongs(details);
+						console.log(responseAsJson);
+						console.log("hola", details);
 						getActions().setPlanetsDetails(details);
 					});
 			},

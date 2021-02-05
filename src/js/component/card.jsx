@@ -10,7 +10,7 @@ import { Link, useParams } from "react-router-dom";
 
 import "../../styles/home.scss";
 
-export const Cardplanets = props => {
+export const CardTemplate = props => {
 	const { store, actions } = useContext(Context);
 
 	return (
@@ -38,7 +38,7 @@ export const Cardplanets = props => {
 		</Card>
 	);
 };
-Cardplanets.propTypes = {
+CardTemplate.propTypes = {
 	name: PropTypes.string,
 	src: PropTypes.string,
 	onClick: PropTypes.any,

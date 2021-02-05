@@ -13,19 +13,20 @@ export const Planets = props => {
 	const planetName = useParams();
 	const history = useHistory();
 
-	console.log("he", store.planetsDetails);
-	console.log("este es mi array", store.planetsDetails);
-
-	// let newPlanet = store.planets.find(item => {
-	// 	if (item.name == planetName.id.replace("_", " ")) {
-	// 		return item;
-	// 	}
-	// });
+	let newPlanet = store.planets.find(item => {
+		if (item.name == planetName.id.replace("_", " ")) {
+			return item;
+		}
+	});
 
 	useEffect(() => {
-		actions.getPlanetsDetails(store.url);
+		actions.getPlanetsDetails(newPlanet.url);
+		history.push(history.location.pathname);
+		console.log("huhuh", history.location.pathname);
 	}, []);
 
+	console.log("he", store.planetsDetails);
+	console.log("este es mi array", store.planetsDetails);
 	//**CREAR COMPONENTE - REVISAR ARRAY VS OBJECT LOS ITEMS VAN POR INDEX */
 
 	// let detailPlanet = store.planetsDetails.map((item, index) => {
@@ -36,5 +37,5 @@ export const Planets = props => {
 	// 	);
 	// });
 
-	return <div>{detailPlanet}</div>;
+	return <div>HOLA</div>;
 };
