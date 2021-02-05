@@ -6,7 +6,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [],
 			urlPeople: "https://www.swapi.tech/api/people",
 			urlPlanets: "https://www.swapi.tech/api/planets",
-			planets: []
+			planets: [],
+			favorites: [],
+			nameDeleteFav: ""
 		},
 		actions: {
 			getStarShips: () => {
@@ -18,14 +20,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json(); // Read the response as json.
 					})
 					.then(responseAsJson => {
-						// Do stuff with the JSON
-						// console.log("next ones", responseAsJson.next);
 						getActions().setUrlStored(responseAsJson.next);
 						getActions().setStarShipsList(responseAsJson.results); //SPREAD
 					});
-				// .catch(error => {
-				// 	console.log("Looks like there was a problem: \n", error);
-				// });
+			},
+
+			clickDeleteFavorite: targetIndex => {
+				//console.log(targetIndex);
+				setStore({ favorites: getStore().favorites.filter(index => index !== targetIndex) });
+				//setTaskList(taskList.filter((_, index) => index !== targetIndex)); //in our website
+				console.log(getStore().favorites);
+			},
+
+			capturePlanet: name => {
+				let found = getStore().favorites.find(item => item == name);
+				if (!found) setStore({ favorites: [...getStore().favorites, name] });
 			},
 
 			setUrlStored: urlFromAPI => {
@@ -70,6 +79,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
+						//console.log(responseAsJson);
 						getActions().setUrlPlanets(responseAsJson.next);
 						getActions().setPlanets(responseAsJson.results);
 					});

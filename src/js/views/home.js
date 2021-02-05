@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, Fragment } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
+import { Favorites } from "../component/favorites.jsx";
 
 import { Container, Row, Col } from "react-bootstrap";
 import CardDeck from "react-bootstrap/Card";
@@ -16,7 +17,16 @@ export const Home = () => {
 	const urlImg =
 		"https://images.unsplash.com/photo-1545156521-77bd85671d30?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
 	let listPlanets = store.planets.map((item, index) => {
-		return <Cardplanets name={item.name} src={urlImg} key={index} />;
+		return (
+			<Cardplanets
+				name={item.name}
+				src={urlImg}
+				key={index}
+				click={() => {
+					actions.capturePlanet(item.name);
+				}}
+			/>
+		);
 	});
 	let starShipsInHTML = store.starShipsList.map((elem, index) => {
 		return (
@@ -31,6 +41,7 @@ export const Home = () => {
 	return (
 		<>
 			<Container>
+				<Favorites />
 				<Row>
 					{store.characters.map((item, index) => {
 						return (
