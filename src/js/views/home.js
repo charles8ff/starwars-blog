@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext, Fragment } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 import { Container, Row, Col } from "react-bootstrap";
 import CardDeck from "react-bootstrap/Card";
@@ -47,11 +49,32 @@ export const Home = () => {
 			/>
 		);
 	});
+
+	const responsive = {
+		desktop: {
+			breakpoint: { max: 3000, min: 1024 },
+			items: 3,
+			slidesToSlide: 3 // optional, default to 1.
+		},
+		tablet: {
+			breakpoint: { max: 1024, min: 464 },
+			items: 2,
+			slidesToSlide: 2 // optional, default to 1.
+		},
+		mobile: {
+			breakpoint: { max: 464, min: 0 },
+			items: 1,
+			slidesToSlide: 1 // optional, default to 1.
+		}
+	};
 	return (
 		<>
-			<div className="row d-flex flex-row justify-content-between">{listPlanets}</div>
-			<div className="row d-flex flex-row justify-content-between">{listStartShips}</div>
-			<div className="row d-flex flex-row justify-content-between">{listPeople}</div>
+			<div className="d-flex flex-row header container-fluid mb-5">hola</div>
+			<Container>
+				<Carousel className="d-flex flex-row ml-auto" responsive={responsive}>
+					{listPeople}
+				</Carousel>
+			</Container>
 		</>
 	);
 };
