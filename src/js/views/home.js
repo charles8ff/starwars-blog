@@ -75,6 +75,18 @@ export const Home = () => {
 					{listPeople}
 				</Carousel>
 			</Container>
+			<div className="d-flex flex-row header container-fluid mb-5">hola</div>
+			<Container>
+				<Carousel className="d-flex flex-row ml-auto" responsive={responsive}>
+					{listPlanets}
+				</Carousel>
+			</Container>
+			<div className="d-flex flex-row header container-fluid mb-5">hola</div>
+			<Container>
+				<Carousel className="d-flex flex-row ml-auto" responsive={responsive}>
+					{listStartShips}
+				</Carousel>
+			</Container>
 		</>
 	);
 };
