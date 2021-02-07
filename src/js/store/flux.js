@@ -5,29 +5,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			urlStored: "https://www.swapi.tech/api/starships",
 			characters: [],
 			urlPeople: "https://www.swapi.tech/api/people",
+			planets: [],
 			urlPlanets: "https://www.swapi.tech/api/planets",
-			planets: []
+			planetsDetails: []
 		},
 		actions: {
-			getStarShips: () => {
-				fetch(getStore().urlStored)
-					.then(response => {
-						if (!response.ok) {
-							throw Error(response.statusText);
-						}
-						return response.json(); // Read the response as json.
-					})
-					.then(responseAsJson => {
-						// Do stuff with the JSON
-						// console.log("next ones", responseAsJson.next);
-						getActions().setUrlStored(responseAsJson.next);
-						getActions().setStarShipsList(responseAsJson.results); //SPREAD
-					});
-				// .catch(error => {
-				// 	console.log("Looks like there was a problem: \n", error);
-				// });
-			},
-
 			setUrlStored: urlFromAPI => {
 				setStore({ urlStored: urlFromAPI });
 			},
@@ -50,6 +32,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ planets: [...getStore().planets, item] });
 				});
 			},
+			setPlanetsDetails: newPlanet => {
+				newPlanet.map(item => {
+					setStore({ planetsDetails: [...getStore().planetsDetails, item] });
+				});
+			},
 			getPeople: () => {
 				fetch(getStore().urlPeople)
 					.then(async res => {
@@ -70,8 +57,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
+						//	console.log(responseAsJson);
 						getActions().setUrlPlanets(responseAsJson.next);
 						getActions().setPlanets(responseAsJson.results);
+					});
+			},
+			getStarShips: () => {
+				fetch(getStore().urlStored)
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						getActions().setUrlStored(responseAsJson.next);
+						getActions().setStarShipsList(responseAsJson.results);
+					});
+			},
+			getPlanetsDetails: urlplanet => {
+				console.log("action", urlplanet);
+				fetch(urlplanet)
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(responseAsJson => {
+						console.log(responseAsJson.result.properties);
+						let details = Object.keys(responseAsJson.result.properties);
+						//setStore({ planetsDetails: [...details] });
+						//	setSongs(details);
+						//console.log(details);
+						//	console.log("hola", details);
+						setStore({ planetsDetails: details });
+						//getActions().setPlanetsDetails(details);
 					});
 			}
 		}
