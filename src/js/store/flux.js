@@ -7,71 +7,50 @@ const getState = ({ getStore, getActions, setStore }) => {
 			urlPeople: "https://www.swapi.tech/api/people",
 			planets: [],
 			urlPlanets: "https://www.swapi.tech/api/planets",
-			details: []
+			details: [],
+			numberOfPost: 12 // es el numero de post que se mostraran antes de paginar
 		},
 		actions: {
-			setUrlStored: urlFromAPI => {
-				setStore({ urlStored: urlFromAPI });
-			},
-			setStarShipsList: starShipsfromAPI => {
-				starShipsfromAPI.map(elem => {
-					setStore({ starShipsList: [...getStore().starShipsList, elem] });
-				});
-			},
-			setURLPeople: next => {
-				setStore({ urlPeople: next });
-			},
-			setCharacters: charactersList => {
-				setStore({ characters: [...getStore().characters, ...charactersList] });
-			},
-			setUrlPlanets: nextUrl => {
-				setStore({ urlPlanets: nextUrl });
-			},
-			setPlanets: newPlanets => {
-				newPlanets.map(item => {
-					setStore({ planets: [...getStore().planets, item] });
-				});
-			},
-			getPeople: () => {
-				fetch(getStore().urlPeople)
+			getPeople: requestURL => {
+				fetch(requestURL)
 					.then(async res => {
 						const response = await res.json();
-						getActions().setCharacters(response.results);
-						getActions().setURLPeople(response.next);
+						setStore({ characters: [...getStore().characters, ...response.results] });
+						if (response.next) {
+							getActions().getPeople(response.next);
+						}
 					})
 					.catch(err => {
 						throw err;
 					});
 			},
-			getPlanets: () => {
-				fetch(getStore().urlPlanets)
-					.then(response => {
-						if (!response.ok) {
-							throw Error(response.statusText);
+			getPlanets: requestURL => {
+				fetch(requestURL)
+					.then(async res => {
+						const response = await res.json();
+						setStore({ planets: [...getStore().planets, ...response.results] });
+						if (response.next) {
+							getActions().getPlanets(response.next);
 						}
-						return response.json();
 					})
-					.then(responseAsJson => {
-						//	console.log(responseAsJson);
-						getActions().setUrlPlanets(responseAsJson.next);
-						getActions().setPlanets(responseAsJson.results);
+					.catch(err => {
+						throw err;
 					});
 			},
-			getStarShips: () => {
-				fetch(getStore().urlStored)
-					.then(response => {
-						if (!response.ok) {
-							throw Error(response.statusText);
+			getStarShips: requestURL => {
+				fetch(requestURL)
+					.then(async res => {
+						const response = await res.json();
+						setStore({ starShipsList: [...getStore().starShipsList, ...response.results] });
+						if (response.next) {
+							getActions().getStarShips(response.next);
 						}
-						return response.json();
 					})
-					.then(responseAsJson => {
-						getActions().setUrlStored(responseAsJson.next);
-						getActions().setStarShipsList(responseAsJson.results);
+					.catch(err => {
+						throw err;
 					});
 			},
 			getDetails: urlDetail => {
-				console.log("action", urlDetail);
 				fetch(urlDetail)
 					.then(response => {
 						if (!response.ok) {

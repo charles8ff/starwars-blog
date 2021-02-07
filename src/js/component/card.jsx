@@ -42,5 +42,6 @@ CardTemplate.propTypes = {
 	src: PropTypes.string,
 	onClick: PropTypes.any,
 	url: PropTypes.string,
+	index: PropTypes.number,
 	category: PropTypes.string
 };
