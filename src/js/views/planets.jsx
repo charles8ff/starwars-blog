@@ -11,9 +11,8 @@ import Pagination from "../component/pagination.jsx";
 import { CardTemplate } from "../component/card.jsx";
 
 export const Planets = () => {
-	// 0 - 59 items
 	const { store, actions } = useContext(Context);
-	const [page, setPage] = useState(1); //Donde comienza la paginacion
+	const [page, setPage] = useState(1); // Page start
 	const [totalPages, setTotalPages] = useState(0);
 
 	useEffect(
