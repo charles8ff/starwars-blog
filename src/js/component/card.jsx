@@ -20,7 +20,7 @@ export const CardTemplate = props => {
 				<Card.Title>{props.name}</Card.Title>
 				<Card.Text>Oohh que planeta tan chulo.</Card.Text>
 				<div className="d-flex justify-content-between">
-					<Link to={"/planets/" + props.name.replace(" ", "_")}>
+					<Link to={props.category + props.name.replace(" ", "_")}>
 						{/* <Link to={props.url.replace("https://www.swapi.tech/api", "")}> */}
 						<Button
 							variant="primary"
@@ -43,5 +43,6 @@ CardTemplate.propTypes = {
 	src: PropTypes.string,
 	onClick: PropTypes.any,
 	url: PropTypes.string,
-	index: PropTypes.number
+	index: PropTypes.number,
+	category: PropTypes.string
 };

@@ -7,6 +7,7 @@ import { Singlecard } from "../component/singlecard.jsx";
 import { Cardplanets } from "../component/card.jsx";
 
 import "../../styles/home.scss";
+import { Container } from "react-bootstrap";
 
 export const Planets = props => {
 	const { store, actions } = useContext(Context);
@@ -30,5 +31,5 @@ export const Planets = props => {
 		[getUrl() != undefined]
 	);
 
-	return <div>HOLA</div>;
+	return <Container>hola</Container>;
 };

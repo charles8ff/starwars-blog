@@ -7,7 +7,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			urlPeople: "https://www.swapi.tech/api/people",
 			planets: [],
 			urlPlanets: "https://www.swapi.tech/api/planets",
-			planetsDetails: []
+			planetsDetails: [],
+			numberOfPost: 10 // es el numero de post que se mostraran antes de paginar
 		},
 		actions: {
 			getPeople: requestURL => {
@@ -28,6 +29,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(async res => {
 						const response = await res.json();
 						setStore({ planets: [...getStore().planets, ...response.results] });
+						setStore({ totalPage: Math.ceil(response.results.length / 5) });
+						//console.log(Math.ceil(getStore().planets.length / getStore().numberOfPost));
 						if (response.next) {
 							getActions().getPlanets(response.next);
 						}
