@@ -4,9 +4,6 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Context } from "../store/appContext";
 
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
-
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, withRouter, Link } from "react-router-dom";
 
