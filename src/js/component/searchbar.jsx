@@ -12,8 +12,8 @@ import { BrowserRouter, Route, withRouter, Link } from "react-router-dom";
 
 export default function Grouped() {
 	const { store, actions } = useContext(Context);
-	const [inputValue, setInputValue] = useState("");
-	const [value, setValue] = useState();
+	// const [inputValue, setInputValue] = useState("");
+	// const [value, setValue] = useState();
 
 	let options = [...store.characters, ...store.planets, ...store.starShipsList];
 	console.log(options);
@@ -31,25 +31,28 @@ export default function Grouped() {
 
 	return (
 		<>
-			<Autocomplete
-				id="grouped-demo"
-				value={value}
-				onChange={(event, newValue) => {
-					setValue(newValue);
-				}}
-				inputValue={inputValue}
-				onInputChange={(event, newInputValue) => {
-					setInputValue(newInputValue);
-				}}
-				options={options.sort((a, b) => -b.type.localeCompare(a.type))}
-				groupBy={option => option.type}
-				getOptionLabel={option => option.name}
-				style={{ width: 300 }}
-				renderInput={params => <TextField {...params} id="text-field" label="Search!" variant="outlined" />}
-			/>
-			<IconButton type="submit" aria-label="search">
-				<SearchIcon />
-			</IconButton>
+			<Link>
+				<Autocomplete
+					id="grouped-demo"
+					// value={value}
+					options={options.sort((a, b) => -b.type.localeCompare(a.type))}
+					groupBy={option => option.type}
+					getOptionLabel={option => option.name}
+					style={{ width: 300 }}
+					renderOption={option => (
+						<React.Fragment>
+							<span
+								style={{ cursor: "pointer" }}
+								onClick={() => {
+									window.location.href = option.type + "/" + option.uid;
+								}}>
+								{option.name}
+							</span>
+						</React.Fragment>
+					)}
+					renderInput={params => <TextField {...params} id="text-field" label="Search!" variant="outlined" />}
+				/>
+			</Link>
 		</>
 	);
 }
