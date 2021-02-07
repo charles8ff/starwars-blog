@@ -64,12 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(responseAsJson => {
 						console.log(responseAsJson.result.properties);
 						let details = Object.keys(responseAsJson.result.properties);
-						//setStore({ planetsDetails: [...details] });
-						//	setSongs(details);
-						//console.log(details);
-						//	console.log("hola", details);
 						setStore({ planetsDetails: details });
-						//getActions().setPlanetsDetails(details);
 					});
 			}
 		}
