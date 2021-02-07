@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			urlPeople: "https://www.swapi.tech/api/people",
 			planets: [],
 			urlPlanets: "https://www.swapi.tech/api/planets",
-			planetsDetails: []
+			details: []
 		},
 		actions: {
 			setUrlStored: urlFromAPI => {
@@ -30,11 +30,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setPlanets: newPlanets => {
 				newPlanets.map(item => {
 					setStore({ planets: [...getStore().planets, item] });
-				});
-			},
-			setPlanetsDetails: newPlanet => {
-				newPlanet.map(item => {
-					setStore({ planetsDetails: [...getStore().planetsDetails, item] });
 				});
 			},
 			getPeople: () => {
@@ -75,9 +70,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						getActions().setStarShipsList(responseAsJson.results);
 					});
 			},
-			getPlanetsDetails: urlplanet => {
-				console.log("action", urlplanet);
-				fetch(urlplanet)
+			getDetails: urlDetail => {
+				console.log("action", urlDetail);
+				fetch(urlDetail)
 					.then(response => {
 						if (!response.ok) {
 							throw Error(response.statusText);
@@ -85,14 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						console.log(responseAsJson.result.properties);
-						let details = Object.keys(responseAsJson.result.properties);
-						//setStore({ planetsDetails: [...details] });
-						//	setSongs(details);
-						//console.log(details);
-						//	console.log("hola", details);
-						setStore({ planetsDetails: details });
-						//getActions().setPlanetsDetails(details);
+						setStore({ details: responseAsJson.result.properties });
 					});
 			}
 		}

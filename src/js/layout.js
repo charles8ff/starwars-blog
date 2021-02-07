@@ -3,13 +3,13 @@ import { BrowserRouter, Route, Switch, useParams } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { Planets } from "./views/planets";
+import { Detailsplanet } from "./views/detailsplanets.jsx";
+import { Detailspeople } from "./views/detailspeople.jsx";
+import { Detailsstarships } from "./views/detailsstarships.jsx";
 
 //create your first component
 const Layout = () => {
@@ -27,7 +27,13 @@ const Layout = () => {
 							<Home />
 						</Route>
 						<Route exact path="/planets/:id">
-							<Planets />
+							<Detailsplanet />
+						</Route>
+						<Route exact path="/people/:id">
+							<Detailspeople />
+						</Route>
+						<Route exact path="/starships/:id">
+							<Detailsstarships />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
