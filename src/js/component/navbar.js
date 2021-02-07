@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
 import Grouped from "./searchbar.jsx";
+import { Favorites } from "../component/favorites.jsx";
 
 export const Navbars = () => {
 	return (
@@ -36,6 +37,7 @@ export const Navbars = () => {
 							</Link>
 						</Nav>
 						<Grouped />
+						<Favorites />
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
