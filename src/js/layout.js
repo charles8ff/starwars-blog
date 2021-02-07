@@ -11,6 +11,10 @@ import { Planets } from "./views/planets.jsx";
 import { Characters } from "./views/characters.jsx";
 import { StarShips } from "./views/starships.jsx";
 
+import { Detailsplanet } from "./views/detailsplanets.jsx";
+import { Detailspeople } from "./views/detailspeople.jsx";
+import { Detailsstarships } from "./views/detailsstarships.jsx";
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -34,6 +38,15 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/starships/">
 							<StarShips />
+						</Route>
+						<Route exact path="/planets/:id">
+							<Detailsplanet />
+						</Route>
+						<Route exact path="/people/:id">
+							<Detailspeople />
+						</Route>
+						<Route exact path="/starships/:id">
+							<Detailsstarships />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

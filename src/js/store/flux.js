@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			urlPeople: "https://www.swapi.tech/api/people",
 			planets: [],
 			urlPlanets: "https://www.swapi.tech/api/planets",
-			planetsDetails: [],
+			details: [],
 			numberOfPost: 12 // es el numero de post que se mostraran antes de paginar
 		},
 		actions: {
@@ -50,8 +50,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						throw err;
 					});
 			},
-			getPlanetsDetails: urlplanet => {
-				fetch(urlplanet)
+			getDetails: urlDetail => {
+				fetch(urlDetail)
 					.then(response => {
 						if (!response.ok) {
 							throw Error(response.statusText);
@@ -59,9 +59,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(responseAsJson => {
-						console.log(responseAsJson.result.properties);
-						let details = Object.keys(responseAsJson.result.properties);
-						setStore({ planetsDetails: details });
+						setStore({ details: responseAsJson.result.properties });
 					});
 			}
 		}
