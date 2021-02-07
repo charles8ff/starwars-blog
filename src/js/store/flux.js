@@ -29,8 +29,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(async res => {
 						const response = await res.json();
 						setStore({ planets: [...getStore().planets, ...response.results] });
-						setStore({ totalPage: Math.ceil(response.results.length / 5) });
-						//console.log(Math.ceil(getStore().planets.length / getStore().numberOfPost));
 						if (response.next) {
 							getActions().getPlanets(response.next);
 						}
@@ -53,7 +51,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			getPlanetsDetails: urlplanet => {
-				console.log("action", urlplanet);
 				fetch(urlplanet)
 					.then(response => {
 						if (!response.ok) {
