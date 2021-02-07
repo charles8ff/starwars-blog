@@ -10,7 +10,7 @@ import Pagination from "../component/pagination.jsx";
 
 import { CardTemplate } from "../component/card.jsx";
 
-export const Planets = () => {
+export const Characters = () => {
 	// 0 - 59 items
 	const { store, actions } = useContext(Context);
 	const [page, setPage] = useState(1); //Donde comienza la paginacion
@@ -18,23 +18,21 @@ export const Planets = () => {
 
 	useEffect(
 		() => {
-			setTotalPages(Math.ceil(store.planets.length / store.numberOfPost));
+			setTotalPages(Math.ceil(store.characters.length / store.numberOfPost));
 		},
-		[store.planets]
+		[store.characters]
 	);
 
 	const startIndex = (page - 1) * store.numberOfPost;
-	const selectedPlanets = store.planets.slice(startIndex, startIndex + store.numberOfPost);
+	const selectedPeople = store.characters.slice(startIndex, startIndex + store.numberOfPost);
 
-	let listPlanets = selectedPlanets.map((item, index) => {
+	let listPeople = selectedPeople.map((item, index) => {
 		return (
 			<Col sm key={index} className="mb-5">
 				<CardTemplate
 					name={item.name}
-					src={
-						"https://images.unsplash.com/photo-1545156521-77bd85671d30?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-					}
-					category={"/planets/"}
+					src={"https://www.wallpapertip.com/wmimgs/41-419911_darth-vader-wallpaper-4k.jpg"}
+					category={"/people/"}
 					index={index}
 					url={item.url}
 					key={index.toString()}
@@ -49,7 +47,7 @@ export const Planets = () => {
 	return (
 		<>
 			<Container className="mt-5">
-				<Row>{listPlanets}</Row>
+				<Row>{listPeople}</Row>
 			</Container>
 			<Container>
 				<Row className="d-flex justify-content-center mb-5">

@@ -10,7 +10,7 @@ import Pagination from "../component/pagination.jsx";
 
 import { CardTemplate } from "../component/card.jsx";
 
-export const Planets = () => {
+export const StarShips = () => {
 	// 0 - 59 items
 	const { store, actions } = useContext(Context);
 	const [page, setPage] = useState(1); //Donde comienza la paginacion
@@ -18,23 +18,21 @@ export const Planets = () => {
 
 	useEffect(
 		() => {
-			setTotalPages(Math.ceil(store.planets.length / store.numberOfPost));
+			setTotalPages(Math.ceil(store.starShipsList.length / store.numberOfPost));
 		},
-		[store.planets]
+		[store.starShipsList]
 	);
 
 	const startIndex = (page - 1) * store.numberOfPost;
-	const selectedPlanets = store.planets.slice(startIndex, startIndex + store.numberOfPost);
+	const selectedStarShips = store.starShipsList.slice(startIndex, startIndex + store.numberOfPost);
 
-	let listPlanets = selectedPlanets.map((item, index) => {
+	let listPeople = selectedStarShips.map((item, index) => {
 		return (
 			<Col sm key={index} className="mb-5">
 				<CardTemplate
 					name={item.name}
-					src={
-						"https://images.unsplash.com/photo-1545156521-77bd85671d30?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-					}
-					category={"/planets/"}
+					src={"https://i.pinimg.com/originals/f4/4d/7f/f44d7f40b15cef45e9d6fe14cad7fb79.jpg"}
+					category={"/starships/"}
 					index={index}
 					url={item.url}
 					key={index.toString()}
@@ -49,7 +47,7 @@ export const Planets = () => {
 	return (
 		<>
 			<Container className="mt-5">
-				<Row>{listPlanets}</Row>
+				<Row>{listPeople}</Row>
 			</Container>
 			<Container>
 				<Row className="d-flex justify-content-center mb-5">

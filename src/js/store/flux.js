@@ -8,7 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets: [],
 			urlPlanets: "https://www.swapi.tech/api/planets",
 			planetsDetails: [],
-			numberOfPost: 10 // es el numero de post que se mostraran antes de paginar
+			numberOfPost: 12 // es el numero de post que se mostraran antes de paginar
 		},
 		actions: {
 			getPeople: requestURL => {
