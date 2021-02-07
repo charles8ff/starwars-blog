@@ -4,7 +4,11 @@ body{
     background-repeat: repeat-y;
 }
 
-.navbar{
-        border-bottom: 0.1rem solid white;
+.navbar-css{
+    border-bottom: 0.1rem solid white;
     background-color: #ffffff12;
+}
+
+.navbar-toggler{
+    background-color: orange;
 }
