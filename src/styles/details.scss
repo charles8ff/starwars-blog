@@ -1,23 +1,28 @@
 
 .card {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     position: relative;
     width: 30rem;
-    margin: 7% auto;
+    background-color: #ffffff47;
+    color: white; 
 }
 
 .imgDetails{
     width: 100%;
-    height: 30rem;
+    height: 25rem;
 }
 
-h1 {
+.detailCard {
     text-align: center;
 }
 
-.detailList{
+.detailCardTitle{
     display: flex;
     justify-content: center;
-   
+    margin-top: 1rem;
+    background-color: #f0ad4e;
+    color: black;   
 }
 
 .ulClass {
@@ -26,13 +31,18 @@ h1 {
     justify-content: center;
     flex-direction: column;
     margin-right: 2.5rem;
+    margin-right: -2.5rem;
 }
 
-.ulClass{
+.liClass {
     display: flex;
-    margin: 0.5rem 0 0.5rem 1rem;  
+    align-items: center;
+    font-size: 1.5rem; 
+    margin-right: 2.5rem;
 }
 
-button {
-    justify-content: end;
+.spanDetail{
+    font-size: 1.8rem;
+    margin-left: 0.3rem;
+    padding: 0 1rem 0 1rem;   
 }

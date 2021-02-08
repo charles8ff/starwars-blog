@@ -17,13 +17,11 @@ export const CardTemplate = props => {
 		<Card className="mb-2" style={{ width: "18rem" }}>
 			<Card.Img className="cardTemplate" variant="top" src={props.src} />
 			<Card.Body>
-				<Card.Title>{props.name}</Card.Title>
-				<Card.Text>{props.description}</Card.Text>
+				<Card.Title className="titleCard">{props.name}</Card.Title>
+				<Card.Text className="descriptionCard">{props.description}</Card.Text>
 				<div className="d-flex justify-content-between">
 					<Link to={props.category + props.name.replace(" ", "_")}>
-						<Button variant="outline-warning">
-							<p>More Details</p>
-						</Button>
+						<button className="cardButton btn btn-outline-warning">More Details</button>
 					</Link>
 					<button className="btn btn-outline-warning" onClick={props.click}>
 						<i className="fas fa-heart" />

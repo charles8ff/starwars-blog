@@ -31,32 +31,65 @@ export const Detailsstarships = props => {
 	);
 
 	return (
-		<div className="container">
+		<content className="container d-flex justify-content-center">
 			<div className="card">
 				<img
 					className="imgDetails"
 					src="https://dam.smashmexico.com.mx/wp-content/uploads/2018/08/17120204/El-Halco%CC%81n-Milenario-Star-Wars.jpg"
 				/>
-				<h1>{store.details.name}</h1>
+				<h1 className="detailCardTitle bg-warning">{store.details.name}</h1>
 				<div className="detailList">
 					<ul className="ulClass">
-						<li>Model: {store.details.model} </li>
-						<li>Starship class: {store.details.starship_class}</li>
-						<li>Cost in credits: {store.details.cost_in_credits}</li>
-						<li>Length: {store.details.length}</li>
-						<li>Crew: {store.details.crew}</li>
-						<li>Passengers: {store.details.passengers}</li>
-						<li>Max atmosphering speed: {store.details.max_atmosphering_speed}</li>
-						<li>Hyperdrive rating: {store.details.hyperdrive_rating}</li>
-						<li>MGLT: {store.details.MGLT}</li>
-						<li>Cargo capacity: {store.details.cargo_capacity}</li>
-						<li>Consumables: {store.details.consumables}</li>
+						<li className="liClass">
+							Model:
+							<span className="spanDetail rounded">{store.details.model}</span>{" "}
+						</li>
+						<li className="liClass">
+							Starship class:
+							<span className="spanDetail rounded">{store.details.starship_class}</span>
+						</li>
+						<li className="liClass">
+							Cost in credits:
+							<span className="spanDetail rounded">{store.details.cost_in_credits}</span>
+						</li>
+						<li className="liClass">
+							Length:
+							<span className="spanDetail rounded">{store.details.length}</span>
+						</li>
+						<li className="liClass">
+							Crew:
+							<span className="spanDetail rounded">{store.details.crew}</span>
+						</li>
+						<li className="liClass">
+							Passengers:
+							<span className="spanDetail rounded">{store.details.passengers}</span>
+						</li>
+						<li className="liClass">
+							Max atmosphering speed:
+							<span className="spanDetail rounded">{store.details.max_atmosphering_speed}</span>
+						</li>
+						<li className="liClass">
+							Hyperdrive rating:
+							<span className="spanDetail rounded">{store.details.hyperdrive_rating}</span>
+						</li>
+						<li className="liClass">
+							MGLT:
+							<span className="spanDetail rounded">{store.details.MGLT}</span>
+						</li>
+						<li className="liClass">
+							Cargo capacity:
+							<span className="spanDetail rounded">{store.details.cargo_capacity}</span>
+						</li>
+						<li className="liClass">
+							Consumables:
+							<span className="spanDetail rounded">{store.details.consumables}</span>
+						</li>
 					</ul>
 				</div>
-				<Link to="/starships/" className="button d-flex justify-content-center">
-					<button className="btn btn-primary">GO BACK</button>
+				<Link to="/starships/" className="button d-flex justify-content-center mb-3">
+					<button className="btn btn-outline-warning btn-lg">GO BACK</button>
 				</Link>
 			</div>
-		</div>
+		</content>
 	);
 };

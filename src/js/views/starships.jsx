@@ -36,6 +36,7 @@ export const StarShips = () => {
 					index={index}
 					url={item.url}
 					key={index.toString()}
+					description={"Que mareo me da esta nave"}
 				/>
 			</Col>
 		);

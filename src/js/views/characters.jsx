@@ -36,6 +36,7 @@ export const Characters = () => {
 					index={index}
 					url={item.url}
 					key={index.toString()}
+					description={"Que la fuerza te acompañe"}
 				/>
 			</Col>
 		);

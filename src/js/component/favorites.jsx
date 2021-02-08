@@ -30,7 +30,8 @@ export const Favorites = props => {
 			id="dropdown-item-button"
 			title={<i className="fas fa-heart" />}
 			variant="outline-warning"
-			className="ml-2">
+			className="ml-2"
+			menuAlign="right">
 			{favoritesInHTML()}
 		</DropdownButton>
 	);

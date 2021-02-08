@@ -31,25 +31,43 @@ export const Detailspeople = props => {
 	);
 
 	return (
-		<content className="container">
+		<content className="container d-flex justify-content-center">
 			<div className="card">
 				<img
 					className="imgDetails"
 					src="https://www.wallpapertip.com/wmimgs/41-419911_darth-vader-wallpaper-4k.jpg"
 				/>
-				<h1>{store.details.name}</h1>
+				<h1 className="detailCardTitle bg-warning">{store.details.name}</h1>
 				<div className="detailList">
 					<ul className="ulClass">
-						<li>Height: {store.details.height} </li>
-						<li>Mass: {store.details.mass}</li>
-						<li>Hair color: {store.details.hair_color}</li>
-						<li>Eye color: {store.details.eye_color}</li>
-						<li>Birth year: {store.details.birth_year}</li>
-						<li>Gender: {store.details.gender}</li>
+						<li className="liClass">
+							Height:
+							<span className="spanDetail rounded">{store.details.height}</span>
+						</li>
+						<li className="liClass">
+							Mass:
+							<span className="spanDetail rounded">{store.details.mass}</span>
+						</li>
+						<li className="liClass">
+							Hair color:
+							<span className="spanDetail rounded">{store.details.hair_color}</span>
+						</li>
+						<li className="liClass">
+							Eye color:
+							<span className="spanDetail rounded"> {store.details.eye_color}</span>
+						</li>
+						<li className="liClass">
+							Birth year:
+							<span className="spanDetail rounded">{store.details.birth_year}</span>{" "}
+						</li>
+						<li className="liClass">
+							Gender:
+							<span className="spanDetail rounded">{store.details.gender}</span>{" "}
+						</li>
 					</ul>
 				</div>
-				<Link to="/people/" className="button d-flex justify-content-center">
-					<button className="btn btn-warning">GO BACK</button>
+				<Link to="/people/" className="d-flex justify-content-center mb-3">
+					<button className="btn btn-outline-warning btn-lg">GO BACK</button>
 				</Link>
 			</div>
 		</content>

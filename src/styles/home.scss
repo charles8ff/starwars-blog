@@ -11,21 +11,33 @@ body{
     font-size: 2rem;
 }
 
-.card{
-    background-color: #ffffff47;
-    color: white;
-    border: 1px solid;
-    border-left: white;
-    border-right: white;
-}
+// .card{
+//     width: 10rem;
+//     background-color: #ffffff47;
+//     color: white;
+//     border: 1px solid;
+//     border-left: white;
+//     border-right: white;
+// }
 .cardTemplate {
     width: 100%;
     height: 11.25rem;
 }
 
-.header{
-    background-color: #ff6;
+.titleCard{
+    font-size: 2rem;
+    text-align: center;
 }
+.descriptionCard{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.cardButton{
+    text-align: center;
+    align-items: center;
+}
+
 .navbar-css{
     border-bottom: 0.1rem solid white;
     background-color: #ffffff12;

@@ -85,20 +85,28 @@ export const Home = () => {
 	};
 	return (
 		<>
-			<div className="d-flex flex-row header container-fluid mb-5">hola</div>
-			<Container>
+			<Container className="mb-2">
+				<div className="d-flex justify-content-center align-items-center bg-warning mt-1">
+					<h1 className="titlesHome mt-2">CHARACTERS</h1>
+				</div>
 				<Carousel className="d-flex flex-row ml-auto" responsive={responsive}>
 					{listPeople}
 				</Carousel>
 			</Container>
-			<div className="d-flex flex-row header container-fluid mb-5">hola</div>
-			<Container>
+
+			<Container className="mb-2">
+				<div className="d-flex justify-content-center align-items-center bg-warning mt-1">
+					<h1 className="titlesHome mt-2">PLANETS</h1>
+				</div>
 				<Carousel className="d-flex flex-row ml-auto" responsive={responsive}>
 					{listPlanets}
 				</Carousel>
 			</Container>
-			<div className="d-flex flex-row header container-fluid mb-5">hola</div>
-			<Container>
+
+			<Container className="mb-2">
+				<div className="d-flex justify-content-center align-items-center bg-warning mt-1">
+					<h1 className="titlesHome mt-2">STARSHIPS</h1>
+				</div>
 				<Carousel className="d-flex flex-row ml-auto" responsive={responsive}>
 					{listStartShips}
 				</Carousel>

@@ -37,6 +37,7 @@ export const Planets = () => {
 					index={index}
 					url={item.url}
 					key={index.toString()}
+					description={"Oh que planeta tan chulo"}
 				/>
 			</Col>
 		);
