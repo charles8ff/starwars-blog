@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Container, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
 import Grouped from "./searchbar.jsx";
+import { Favorites } from "../component/favorites.jsx";
+import "../../styles/home.scss";
 
 export const Navbars = () => {
 	return (
@@ -22,20 +24,21 @@ export const Navbars = () => {
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="ml-auto">
-							<Link to="/" className="mx-4">
+							<Link to="/" className="mx-4 buttonsMenu">
 								Home
 							</Link>
-							<Link to="/planets/" className="mx-4">
+							<Link to="/planets/" className="mx-4 buttonsMenu">
 								Planets
 							</Link>
-							<Link to="/people/" className="mx-4">
+							<Link to="/people/" className="mx-4 buttonsMenu">
 								People
 							</Link>
-							<Link to="/starships/" className="mx-4">
+							<Link to="/starships/" className="mx-4 buttonsMenu">
 								StarShips
 							</Link>
 						</Nav>
 						<Grouped />
+						<Favorites />
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>

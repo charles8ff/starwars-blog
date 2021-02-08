@@ -18,19 +18,15 @@ export const CardTemplate = props => {
 			<Card.Img className="cardTemplate" variant="top" src={props.src} />
 			<Card.Body>
 				<Card.Title>{props.name}</Card.Title>
-				<Card.Text>Oohh que planeta tan chulo.</Card.Text>
+				<Card.Text>{props.description}</Card.Text>
 				<div className="d-flex justify-content-between">
 					<Link to={props.category + props.name.replace(" ", "_")}>
-						<Button
-							variant="primary"
-							onClick={() => {
-								props.url;
-							}}>
-							<p>LINK TO:</p>
+						<Button variant="outline-warning">
+							<p>More Details</p>
 						</Button>
 					</Link>
-					<button className="btn btn-success">
-						<i className="far fa-heart" />
+					<button className="btn btn-outline-warning" onClick={props.click}>
+						<i className="fas fa-heart" />
 					</button>
 				</div>
 			</Card.Body>
@@ -40,8 +36,9 @@ export const CardTemplate = props => {
 CardTemplate.propTypes = {
 	name: PropTypes.string,
 	src: PropTypes.string,
-	onClick: PropTypes.any,
+	click: PropTypes.func,
 	url: PropTypes.string,
 	index: PropTypes.number,
-	category: PropTypes.string
+	category: PropTypes.string,
+	description: PropTypes.string
 };

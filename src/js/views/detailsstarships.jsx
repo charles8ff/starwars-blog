@@ -12,8 +12,6 @@ export const Detailsstarships = props => {
 	const { store, actions } = useContext(Context);
 	const param = useParams();
 
-	console.log("gege", store.details);
-	console.log("hola", store.details.name);
 	let url = {};
 
 	let newStarship = store.starShipsList.find(item => {
@@ -33,7 +31,7 @@ export const Detailsstarships = props => {
 	);
 
 	return (
-		<content className="container">
+		<div className="container">
 			<div className="card">
 				<img
 					className="imgDetails"
@@ -41,7 +39,7 @@ export const Detailsstarships = props => {
 				/>
 				<h1>{store.details.name}</h1>
 				<div className="detailList">
-					<ul>
+					<ul className="ulClass">
 						<li>Model: {store.details.model} </li>
 						<li>Starship class: {store.details.starship_class}</li>
 						<li>Cost in credits: {store.details.cost_in_credits}</li>
@@ -59,6 +57,6 @@ export const Detailsstarships = props => {
 					<button className="btn btn-primary">GO BACK</button>
 				</Link>
 			</div>
-		</content>
+		</div>
 	);
 };

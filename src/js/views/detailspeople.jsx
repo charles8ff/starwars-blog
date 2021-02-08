@@ -12,8 +12,6 @@ export const Detailspeople = props => {
 	const { store, actions } = useContext(Context);
 	const param = useParams();
 
-	console.log("gege", store.details);
-	console.log("hola", store.details.name);
 	let url = {};
 
 	let newPeople = store.characters.find(item => {
@@ -41,7 +39,7 @@ export const Detailspeople = props => {
 				/>
 				<h1>{store.details.name}</h1>
 				<div className="detailList">
-					<ul>
+					<ul className="ulClass">
 						<li>Height: {store.details.height} </li>
 						<li>Mass: {store.details.mass}</li>
 						<li>Hair color: {store.details.hair_color}</li>
@@ -50,8 +48,8 @@ export const Detailspeople = props => {
 						<li>Gender: {store.details.gender}</li>
 					</ul>
 				</div>
-				<Link to="/starships/" className="button d-flex justify-content-center">
-					<button className="btn btn-primary">GO BACK</button>
+				<Link to="/people/" className="button d-flex justify-content-center">
+					<button className="btn btn-warning">GO BACK</button>
 				</Link>
 			</div>
 		</content>

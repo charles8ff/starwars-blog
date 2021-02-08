@@ -23,7 +23,11 @@ export const Home = () => {
 				}
 				index={index}
 				url={item.url}
+				click={() => {
+					actions.captureItem(item.name);
+				}}
 				key={index.toString()}
+				description={"Oh que planeta tan chulo"}
 			/>
 		);
 	});
@@ -36,7 +40,11 @@ export const Home = () => {
 				src={"https://i.pinimg.com/originals/f4/4d/7f/f44d7f40b15cef45e9d6fe14cad7fb79.jpg"}
 				index={index}
 				url={item.url}
+				click={() => {
+					actions.captureItem(item.name);
+				}}
 				key={index.toString()}
+				description={"Que mareo me da esta nave"}
 			/>
 		);
 	});
@@ -49,7 +57,11 @@ export const Home = () => {
 				src={"https://www.wallpapertip.com/wmimgs/41-419911_darth-vader-wallpaper-4k.jpg"}
 				index={index}
 				url={item.url}
+				click={() => {
+					actions.captureItem(item.name);
+				}}
 				key={index.toString()}
+				description={"Que la fuerza te acompañe"}
 			/>
 		);
 	});
