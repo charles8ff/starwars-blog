@@ -19,7 +19,7 @@ export const Favorites = props => {
 				<Dropdown.ItemText key={index.toString()}>
 					{item}{" "}
 					<Button onClick={() => actions.clickDeleteFavorite(item)} variant="outline-warning">
-						<i className="fas fa-minus-circle" />
+						<i className="fas fa-3x fa-minus-circle " />
 					</Button>
 				</Dropdown.ItemText>
 			);
