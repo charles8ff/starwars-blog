@@ -28,10 +28,9 @@
 .ulClass {
     width: 100%;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     margin-right: 2.5rem;
-    margin-right: -2.5rem;
+
 }
 
 .liClass {
@@ -40,6 +39,14 @@
     font-size: 1.5rem; 
     margin-right: 2.5rem;
 }
+
+ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 
+}
+
 
 .spanDetail{
     font-size: 1.8rem;
